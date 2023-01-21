@@ -1,7 +1,9 @@
 package com.oneseed.weatherapp
 
 import android.Manifest
+import android.content.Context
 import android.content.pm.PackageManager
+import android.location.LocationManager
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -27,7 +29,6 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             WeatherAppTheme {
-                getData(36.18557739257813, 51.74756622314453)
 
                 if (ContextCompat.checkSelfPermission(
                         this,
@@ -38,6 +39,12 @@ class MainActivity : ComponentActivity() {
                     requestLocationPermission()
                 } else {
                     MainScreen()
+                    // please get user location and send to getData()
+                    val  locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+                    val location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+                    if (location != null) {
+                        getData(location.longitude, location.latitude)
+                    }
                 }
 
 
