@@ -1,6 +1,5 @@
 package com.oneseed.weatherapp.screens
 
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -14,7 +13,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.oneseed.weatherapp.R
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -58,7 +56,9 @@ fun MainScreen() {
                     Text(
                         text = "4°",
                         style = TextStyle(fontSize = 50.sp),
-                        modifier = Modifier.padding(5.dp).align(Alignment.CenterVertically)
+                        modifier = Modifier
+                            .padding(5.dp)
+                            .align(Alignment.CenterVertically)
                     )
                     AsyncImage(
                         model = "https:////cdn.weatherapi.com/weather/64x64/day/113.png",
